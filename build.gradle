@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+group 'me.tarno'
+version '1.0-SNAPSHOT'
+
+ext {
+    vertxVersion = '4.0.2'
+}
+
+repositories {
+    mavenCentral()
+    jcenter {
+        url "http://jcenter.bintray.com/"
+    }
+    maven {
+        url = "http://oss.sonatype.org/content/repositories/snapshots/"
+    }
+}
+
+dependencies {
+    implementation "io.vertx:vertx-core:$vertxVersion"
+    implementation "io.vertx:vertx-rx-java2:$vertxVersion"
+    //implementation "io.vertx:vertx-rx-java:$vertxVersion"
+    implementation "io.vertx:vertx-codegen:$vertxVersion"
+    implementation "io.vertx:vertx-service-proxy:$vertxVersion"
+    implementation "io.vertx:vertx-rx-java2-gen:$vertxVersion"
+
+    annotationProcessor "io.vertx:vertx-codegen:$vertxVersion:processor"
+    annotationProcessor "io.vertx:vertx-service-proxy:$vertxVersion"
+
+    testCompile "io.vertx:vertx-core:$vertxVersion"
+    testCompile "io.vertx:vertx-rx-java2:$vertxVersion"
+    //testCompile "io.vertx:vertx-rx-java:$vertxVersion"
+    testCompile "io.vertx:vertx-codegen:$vertxVersion"
+    testCompile "io.vertx:vertx-service-proxy:$vertxVersion"
+    testCompile "io.vertx:vertx-rx-java2-gen:$vertxVersion"
+
+    testAnnotationProcessor "io.vertx:vertx-codegen:$vertxVersion:processor"
+    testAnnotationProcessor "io.vertx:vertx-service-proxy:$vertxVersion"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+}
